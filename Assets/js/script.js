@@ -1,7 +1,7 @@
 // Global variables
 const searchHistory = [];
 const weatherApiRootUrl = 'https://api.openweathermap.org';
-const weatherApiKey = 'd91f911bcf2c0f925fb6535547a5ddc9';
+const weatherApiKey = '60705b5c42f40060d9fe997927c6a2a2';
 
 // DOM element references
 const searchForm = document.querySelector('#search-form');
@@ -44,7 +44,7 @@ function appendToHistory(search) {
   renderSearchHistory();
 }
 
-// Function to get search history from local storage
+// Function to get search history from local storage which in turn prints it to the side of the screen.
 function initSearchHistory() {
   const storedHistory = localStorage.getItem('search-history');
   if (storedHistory) {
@@ -54,6 +54,7 @@ function initSearchHistory() {
 }
 
 // Function to display the current weather data fetched from OpenWeather api.
+// this is what allows the 5 day forecast to appear
 function renderCurrentWeather(city, weather) {
   const date = dayjs().format('M/D/YYYY');
   // Store response data from our fetch request in variables
@@ -105,6 +106,7 @@ function renderForecastCard(forecast) {
   const windMph = forecast.wind.speed;
 
   // Create elements for a card
+    // everything below this is is creating elements & appending them which visually puts all the data on the screen so its not blank like it is upon first load
   const col = document.createElement('div');
   const card = document.createElement('div');
   const cardBody = document.createElement('div');
@@ -191,6 +193,7 @@ function fetchWeather(location) {
     });
 }
 
+// this is giving the Script instructions to use the API key and the search API link to get the data requested. if the location doesn't exist then it will tell you and display no forecast.
 function fetchCoords(search) {
   const apiUrl = `${weatherApiRootUrl}/geo/1.0/direct?q=${search}&limit=5&appid=${weatherApiKey}`;
 
@@ -216,7 +219,7 @@ function handleSearchFormSubmit(e) {
   if (!searchInput.value) {
     return;
   }
-
+// this makes it so it actually searches. with out "preventdefault" it'd just clear when you hit "submit/search" and not show any results.
   e.preventDefault();
   const search = searchInput.value.trim();
   fetchCoords(search);
@@ -234,6 +237,7 @@ function handleSearchHistoryClick(e) {
   fetchCoords(search);
 }
 
+// this is just calling functions/setting up the eventlisteners to know when someone submits / make sure it can handle displaying the search history
 initSearchHistory();
 searchForm.addEventListener('submit', handleSearchFormSubmit);
 searchHistoryContainer.addEventListener('click', handleSearchHistoryClick);
