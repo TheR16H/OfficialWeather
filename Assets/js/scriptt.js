@@ -238,6 +238,6 @@ function handleSearchFormSubmit(e) {
   // this is just calling functions/setting up the eventlisteners to know when someone submits / make sure it can handle displaying the search history
   initSearchHistory();
   searchForm.addEventListener('submit', handleSearchFormSubmit);
-    // console.log("How's the weather?");
+    console.log("How's the weather?");
     searchHistoryContainer.addEventListener('click', handleSearchHistoryClick);
   initSearchHistory();
