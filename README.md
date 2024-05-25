@@ -15,8 +15,8 @@ This Is a [weather site](https://ther16h.github.io/OfficialWeather/) that will b
 N/A
 
 ## Visuals
-<!-- ![ScreenShot1](./assets/images/ok.png) -->
-<!-- ![Demo](path to demo)  -->
+![ScreenShot1](./assets/images/ok.png)
+![Demo](./assets/images/demo-ezgif.com-speed.gif) 
 
 ## Contributions
 N/A
